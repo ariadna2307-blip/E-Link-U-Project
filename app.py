@@ -4,7 +4,7 @@ from supabase import create_client
 
 # Configuración de la página
 st.set_page_config(page_title="E-Link-U Dashboard", layout="wide")
-st.title("📊 E-Link-U: Impacto Económico y Movilidad")
+st.title("📊 E-Link-U: Economic Impact and Mobility - Impacto Económico y Movilidad")
 
 # Conexión a Supabase (usando los Secrets de Streamlit)
 url = st.secrets["SUPABASE_URL"]
