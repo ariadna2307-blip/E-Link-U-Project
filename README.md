@@ -19,10 +19,30 @@ I have cross-referenced **JR East (Japan)** integrated reports with **European C
 
 ## 📊 The Friction Benchmark (La Prueba)
 
+
 | Metric | Japan (Suica) | European Union (Current) |
 | :--- | :--- | :--- |
 | **Friction Cost** | **€50** (Maintenance) | **€1,020** (Inefficiency Tax) |
 | **Gap to Recover** | **Baseline** | **€970 per person** |
+
+## 🗺️ Implementation Roadmap (Hoja de Ruta)
+
+To move from simulation to reality, **E-Link-U** follows a three-phase scalable deployment:
+
+### 📍 Phase 1: Rural Pilot (The "Beatrix" Initiative)
+* **Focus:** Elderly and low-connectivity populations in rural Spain and Italy.
+* **Action:** Deployment of Smart Physical Cards with ZKP pre-validation for healthcare and local transport.
+* **Goal:** Prove the reduction of the "Administrative Tax" in high-friction areas.
+
+### 🚄 Phase 2: Trans-European Corridors
+* **Focus:** Migrants, asylum seekers, and high-frequency travelers.
+* **Action:** Digital Wallet integration for cross-border rail and identity validation (Madrid-Paris-Berlin corridor).
+* **Goal:** Seamless cross-border mobility without redundant re-registration.
+
+### 🌐 Phase 3: Full Public Interoperability
+* **Focus:** Universal EU Citizenry.
+* **Action:** Integration of tax, social security, and retail payments into the E-Link-U infrastructure (MaaS + SSI).
+* **Goal:** Achieve the €459B annual recovery target across the 27 member states.
 
 ---
 *Built with Python, GitHub Actions & Supabase | Strategic Research by Lia Ruiz*
