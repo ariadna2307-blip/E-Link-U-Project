@@ -54,7 +54,7 @@ try:
 
         with col_c:
             st.subheader("Hybrid Access")
-            st.write("Inclusion first: **Physical Cards** for rural seniors and **Digital Wallets** for the mobile workforce.")
+            st.write("Inclusion first: **Physical Cards** We prioritize Senior Citizens (physical cards for inclusion), Migrants (immediate digital trust), and Global Travelers (seamless cross-border mobility)and **Digital Wallets** for the mobile workforce.")
 
         # --- SECCIÓN 4: ROADMAP HÍBRIDO (El toque de Seniority) ---
         st.divider()
