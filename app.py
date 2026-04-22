@@ -1,41 +1,18 @@
-import streamlit as st
-import pandas as pd
-from supabase import create_client
+st.divider()
+st.header("🛡️ Strategic Pillars: Privacy & Implementation")
 
-# Configuración y Conexión
-st.set_page_config(page_title="E-Link-U: Infrastructure Intelligence", layout="wide")
-st.title("📊 E-Link-U: Regional Recovery Dashboard")
+col_a, col_b, col_c = st.columns(3)
 
-try:
-    url = st.secrets["SUPABASE_URL"]
-    key = st.secrets["SUPABASE_KEY"]
-    supabase = create_client(url, key)
-    
-    # Traer datos
-    response = supabase.table("country_impact").select("*").execute()
-    df = pd.DataFrame(response.data)
+with col_a:
+    st.subheader("Zero-Knowledge Privacy")
+    st.write("E-Link-U uses **ZKP protocols**. We verify that Beatrix is eligible for a service *without* exposing her private data to central databases. Sovereignty by design.")
 
-    if not df.empty:
-        # --- NUEVA SECCIÓN: CALCULADORA REGIONAL ---
-        st.header("🎯 Regional Savings Calculator")
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            country_selected = st.selectbox("Select a Country to Audit:", df['country_name'].unique())
-            country_row = df[df['country_name'] == country_selected].iloc[0]
-            
-        with col2:
-            st.metric(label=f"Potential Recovery for {country_selected}", 
-                      value=f"€{country_row['rural_recovery_potential']:.2f} Billion")
+with col_b:
+    st.subheader("Instant ROI")
+    st.write("With a projected recovery of **€459B/year**, even a high-tier implementation cost is recovered within the first 30 days of operation. Pure economic efficiency.")
 
-        st.divider()
+with col_c:
+    st.subheader("Hybrid Access")
+    st.write("Hospitality means inclusion. We provide **Physical Cards** for rural elderly populations and **Digital Wallets** for the mobile workforce. No one is left behind.")
 
-        # --- VISUALIZACIÓN COMPARATIVA ---
-        st.subheader("Comparison: Annual Loss vs. E-Link-U Recovery")
-        st.bar_chart(data=df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'])
-        
-        # Tabla detallada con colores
-        st.dataframe(df.style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
-
-except Exception as e:
-    st.error(f"Waiting for connection: {e}")
+st.info("🎯 This framework aligns with GDPR and the European Digital Identity (EUDI) wallet standards.")
