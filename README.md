@@ -43,6 +43,9 @@ To move from simulation to reality, **E-Link-U** follows a three-phase scalable 
 * **Focus:** Universal EU Citizenry.
 * **Action:** Integration of tax, social security, and retail payments into the E-Link-U infrastructure (MaaS + SSI).
 * **Goal:** Achieve the €459B annual recovery target across the 27 member states.
+ 
+💡 Next Horizon: Sovereign Cloud & Micro-mobility Integration.
+E-Link-U is being architected to align with Gaia-X standards, ensuring that data sovereignty remains within EU borders while integrating last-mile rural transport solutions (MaaS)
 
 ---
 *Built with Python, GitHub Actions & Supabase | Strategic Research by Lia Ruiz*
