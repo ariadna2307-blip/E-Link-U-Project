@@ -18,7 +18,7 @@ try:
 
     # 4. Display Data (The part that was failing)
     if not df.empty:
-        st.subheader("Potencial de Recuperación por País (Zonas Rurales)")
+        st.subheader("Recovery Potential by Country (Rural Areas) - Potencial de Recuperación por País (Zonas Rurales)")
         st.dataframe(df.sort_values(by='annual_loss_billion', ascending=False))
         st.bar_chart(data=df, x='country_name', y='annual_loss_billion')
     else:
