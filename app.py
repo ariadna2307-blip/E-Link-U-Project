@@ -55,7 +55,7 @@ try:
 
         with col_c:
             st.subheader("Hybrid Access")
-            st.write("Hospitality means inclusion. We provide **Physical Cards** for rural elderly populations and **Digital Wallets** for the mobile workforce. No one is left behind.")
+            st.write("Hospitality means inclusion. We provide **Physical Cards** for We prioritize Senior Citizens (physical cards for inclusion), Migrants (immediate digital trust), and Global Travelers (seamless cross-border mobility) and **Digital Wallets** for the mobile workforce. No one is left behind.")
 
         st.info("🎯 This framework aligns with GDPR and the European Digital Identity (EUDI) wallet standards.")
 
