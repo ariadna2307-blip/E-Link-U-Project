@@ -1,44 +1,41 @@
-# Reemplaza la parte de la tabla por esta:
 import streamlit as st
 import pandas as pd
 from supabase import create_client
 
-# 1. Configuración de la página
-st.set_page_config(page_title="E-Link-U Dashboard", layout="wide")
-st.title("📊 E-Link-U: Economic Impact and Mobility - Impacto Económico y Movilidad")
-st.markdown("### Restoring efficiency for citizens like Beatrix - Recuperando la eficiencia para ciudadanos como Beatrix")
+# Configuración y Conexión
+st.set_page_config(page_title="E-Link-U: Infrastructure Intelligence", layout="wide")
+st.title("📊 E-Link-U: Regional Recovery Dashboard")
 
-# 2. Conexión Segura
 try:
     url = st.secrets["SUPABASE_URL"]
     key = st.secrets["SUPABASE_KEY"]
     supabase = create_client(url, key)
-
-    # 3. Traer los datos de la tabla country_impact
+    
+    # Traer datos
     response = supabase.table("country_impact").select("*").execute()
     df = pd.DataFrame(response.data)
 
-    # 4. Diseño y Visualización
     if not df.empty:
-        st.subheader("📍Impact Breakdown by Nation - Desglose de Impacto por Nación")
+        # --- NUEVA SECCIÓN: CALCULADORA REGIONAL ---
+        st.header("🎯 Regional Savings Calculator")
+        col1, col2 = st.columns(2)
         
-        # Ordenar y formatear la tabla con colores
-        df_styled = df.sort_values(by='annual_loss_billion', ascending=False)
+        with col1:
+            country_selected = st.selectbox("Select a Country to Audit:", df['country_name'].unique())
+            country_row = df[df['country_name'] == country_selected].iloc[0]
+            
+        with col2:
+            st.metric(label=f"Potential Recovery for {country_selected}", 
+                      value=f"€{country_row['rural_recovery_potential']:.2f} Billion")
+
+        st.divider()
+
+        # --- VISUALIZACIÓN COMPARATIVA ---
+        st.subheader("Comparison: Annual Loss vs. E-Link-U Recovery")
+        st.bar_chart(data=df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'])
         
-        # Aplicamos el diseño: Moneda (€) y degradado de color rojo
-        st.dataframe(
-            df_styled.style.format({
-                "annual_loss_billion": "€{:.2f}B",
-                "rural_recovery_potential": "€{:.2f}B"
-            }).background_gradient(cmap="Reds", subset=["annual_loss_billion"]),
-            use_container_width=True
-        )
-        
-        # Gráfico de barras con un color sólido profesional
-        st.bar_chart(data=df, x='country_name', y='annual_loss_billion', color="#FF4B4B")
-        
-    else:
-        st.warning("La base de datos está conectada pero no hay datos aún.")
+        # Tabla detallada con colores
+        st.dataframe(df.style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
 
 except Exception as e:
-    st.error(f"Error de conexión: {e}")
+    st.error(f"Waiting for connection: {e}")
