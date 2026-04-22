@@ -5,7 +5,7 @@ from supabase import create_client
 
 # 1. Configuración de la página
 st.set_page_config(page_title="E-Link-U Dashboard", layout="wide")
-st.title("📊 E-Link-U: Impacto Económico y Movilidad")
+st.title("📊 E-Link-U: Economic Impact and Mobility - Impacto Económico y Movilidad")
 st.markdown("### Recuperando la eficiencia para ciudadanos como Beatrix")
 
 # 2. Conexión Segura
@@ -20,7 +20,7 @@ try:
 
     # 4. Diseño y Visualización
     if not df.empty:
-        st.subheader("📍 Desglose de Impacto por Nación")
+        st.subheader("📍Impact Breakdown by Nation - Desglose de Impacto por Nación")
         
         # Ordenar y formatear la tabla con colores
         df_styled = df.sort_values(by='annual_loss_billion', ascending=False)
