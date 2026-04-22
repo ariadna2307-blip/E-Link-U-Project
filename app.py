@@ -1,29 +1,17 @@
-import streamlit as st
-import pandas as pd
-from supabase import create_client
-
-# 1. Page Config
-st.set_page_config(page_title="E-Link-U Dashboard", layout="wide")
-st.title("📊 E-Link-U: Economic Impact and Mobility - Impacto Económico y Movilidad ")
-
-# 2. Connection (Check if secrets exist)
-try:
-    url = st.secrets["SUPABASE_URL"]
-    key = st.secrets["SUPABASE_KEY"]
-    supabase = create_client(url, key)
-
-    # 3. Fetch Data
-    response = supabase.table("country_impact").select("*").execute()
-    df = pd.DataFrame(response.data)
-
-    # 4. Display Data (The part that was failing)
-    if not df.empty:
-        st.subheader("Potential Recovery by Country (Rural Areas) - Potencial de Recuperación por País (Zonas Rurales)")
-        st.dataframe(df.sort_values(by='annual_loss_billion', ascending=False))
-        st.bar_chart(data=df, x='country_name', y='annual_loss_billion')
-    else:
-        st.warning("La base de datos está conectada pero no se encontraron filas.")
-
-except Exception as e:
-    st.error(f"Error de conexión o configuración: {e}")
-    st.info("Asegúrate de que SUPABASE_URL y SUPABASE_KEY estén en los 'Secrets' de Streamlit.")
+# Reemplaza la parte de la tabla por esta:
+if not df.empty:
+    st.subheader("📍 Desglose de Impacto por Nación")
+    
+    # Creamos una versión "estilizada"
+    df_styled = df.sort_values(by='annual_loss_billion', ascending=False)
+    
+    # Formateamos los números para que se vean como moneda
+    st.dataframe(
+        df_styled.style.format({
+            "annual_loss_billion": "€{:.2f}B",
+            "rural_recovery_potential": "€{:.2f}B"
+        }).background_gradient(cmap="Reds", subset=["annual_loss_billion"]),
+        use_container_width=True
+    )
+    
+    st.bar_chart(data=df, x='country_name', y='annual_loss_billion', color="#FF4B4B")
