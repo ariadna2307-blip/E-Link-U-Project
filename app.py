@@ -6,7 +6,7 @@ from supabase import create_client
 # 1. Configuración de la página
 st.set_page_config(page_title="E-Link-U Dashboard", layout="wide")
 st.title("📊 E-Link-U: Economic Impact and Mobility - Impacto Económico y Movilidad")
-st.markdown("### Recuperando la eficiencia para ciudadanos como Beatrix")
+st.markdown("### Restoring efficiency for citizens like Beatrix - Recuperando la eficiencia para ciudadanos como Beatrix")
 
 # 2. Conexión Segura
 try:
